@@ -50,28 +50,39 @@ open class FSPagerViewCell: UICollectionViewCell {
     
     fileprivate weak var _selectedForegroundView: UIView?
     fileprivate var selectedForegroundView: UIView? {
-        if let _ = _selectedForegroundView {
+        guard _selectedForegroundView == nil else {
             return _selectedForegroundView
         }
-        let view = UIView(frame: self.contentView.bounds)
-        self.contentView.addSubview(view)
+        guard let imageView = _imageView else {
+            return nil
+        }
+        let view = UIView(frame: imageView.bounds)
+        imageView.addSubview(view)
         _selectedForegroundView = view
         return view
     }
     
     open override var isHighlighted: Bool {
-        didSet {
-            if self.isHighlighted {
+        set {
+            super.isHighlighted = newValue
+            if newValue {
                 self.selectedForegroundView?.layer.backgroundColor = self.selectionColor.cgColor
-            } else if !self.isSelected {
+            } else if !super.isSelected {
                 self.selectedForegroundView?.layer.backgroundColor = UIColor.clear.cgColor
             }
+        }
+        get {
+            return super.isHighlighted
         }
     }
     
     open override var isSelected: Bool {
-        didSet {
-            self.selectedForegroundView?.layer.backgroundColor = self.isSelected ? self.selectionColor.cgColor : UIColor.clear.cgColor
+        set {
+            super.isSelected = newValue
+            self.selectedForegroundView?.layer.backgroundColor = newValue ? self.selectionColor.cgColor : UIColor.clear.cgColor
+        }
+        get {
+            return super.isSelected
         }
     }
     

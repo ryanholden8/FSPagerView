@@ -10,7 +10,7 @@ import UIKit
 
 class TransformerExampleViewController: UIViewController,FSPagerViewDataSource,FSPagerViewDelegate, UITableViewDataSource,UITableViewDelegate {
     
-    fileprivate let imageNames = ["1_1.jpg","1_2.jpg","1_3.jpg","1_4.jpg","1_5.jpg","1_6.jpg","1_7.jpg"]
+    fileprivate let imageNames = ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg"]
     fileprivate let transformerNames = ["cross fading", "zoom out", "depth", "linear", "overlap", "ferris wheel", "inverted ferris wheel", "coverflow", "cubic"]
     fileprivate let transformerTypes: [FSPagerViewTransformerType] = [.crossFading,
                                                                       .zoomOut,
@@ -26,7 +26,7 @@ class TransformerExampleViewController: UIViewController,FSPagerViewDataSource,F
             let type = self.transformerTypes[typeIndex]
             self.pagerView.transformer = FSPagerViewTransformer(type:type)
             switch type {
-            case .none, .crossFading, .zoomOut, .depth:
+            case .crossFading, .zoomOut, .depth:
                 self.pagerView.itemSize = .zero // 'Zero' means fill the size of parent
             case .linear, .overlap:
                 let transform = CGAffineTransform(scaleX: 0.6, y: 0.75)

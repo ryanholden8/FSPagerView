@@ -1,4 +1,4 @@
-# FSPagerView
+![fspagerview](https://cloud.githubusercontent.com/assets/5186464/24086370/45e7e8dc-0d49-11e7-86aa-139354fe00c5.jpg)
 
 [![Languages](https://img.shields.io/badge/language-swift%20|%20objc-FF69B4.svg?style=plastic)](#) <br/>
 [![Platform](https://img.shields.io/badge/platform-iOS%20|%20tvOS-blue.svg?style=plastic)](http://cocoadocs.org/docsets/FSPagerView)
@@ -14,6 +14,7 @@
 ## Features
 *  ***Infinite*** scrolling.
 *  ***Automatic*** Sliding.
+*  ***Horizontal*** and ***Vertical*** paging.
 *  Fully customizable item, with predefined banner-style item.
 *  Fully customizable ***page control***.
 *  Rich build-in 3D transformers.
@@ -233,7 +234,7 @@ Sets the path for page indicators to use for the specified state. (selected/norm
 
 ```swift
 pageControl.setPath(UIBezierPath(rect: CGRect(x: 0, y: 0, width: 8, height: 8)), for: .normal)
-pageControl.setPath(UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 8, height: 8)), for: .normal)
+pageControl.setPath(UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 8, height: 8)), for: .selected)
 ```
 
 ## Installation
@@ -243,13 +244,15 @@ pageControl.setPath(UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 8, height: 8)
 
 ### Manually
 1. ***[Download](#)*** the source code.
-2. Extract the zip file, simply drag folder ***FSPagerView*** into your project.
+2. Extract the zip file, simply drag folder ***Sources*** into your project.
 3. Make sure ***Copy items if needed*** is checked.
 
 ### Cocoapods
 ```ruby
 use_frameworks!
-pod FSPagerView
+target '<Your Target Name>' do
+    pod 'FSPagerView'
+end
 ```
 
 ### Carthage
@@ -258,13 +261,13 @@ github "WenchaoD/FSPagerView"
 ```
 
 ## Tutorial
-* [Get started](#get_started)
+* [Getting started](#getting_started)
 * [Implement FSPagerViewDataSource](#implement_fspagerviewdatasource)
 * [Implement FSPagerViewDelegate](#implement_fspagerviewdelegate)
 
-### 1. Get started <a id='get_started'></a>
+### 1. Getting started <a id='getting_started'></a>
 
-* Get started with code
+* Getting started with code
 
 ```swift
 // Create a pager view
@@ -274,11 +277,11 @@ pagerView.delegate = self
 pagerView.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "cell")
 self.view.addSubview(pagerView)
 // Create a page control
-let pageControl = FSPagerControl(frame: frame2)
+let pageControl = FSPageControl(frame: frame2)
 self.view.addSubview(pageControl)
 ```
 
-* Get started with Interface Builder <br/>
+* Getting started with Interface Builder <br/>
 1、Simply drag **UIView** instance into your View Controller, Change the `Custom Class` to `FSPagerView`. (Or `FSPageControl`) <br/>
 2、Link the `dataSource` and `delegate` property of **FSPagerView** to your View Controller. <br/>
 3、Register a cell class.
@@ -401,9 +404,9 @@ func pagerViewDidEndDecelerating(_ pagerView: FSPagerView)
 ## Author
 * ***微博：[@WenchaoD](http://weibo.com/WenchaoD)***
 * ***Twitter: [@WenchaoD](https://twitter.com/WenchaoD)***
-* Other repos:
-	* <img src="https://cloud.githubusercontent.com/assets/5186464/22828152/b83ab04e-efd6-11e6-9baf-37abf0ae29c0.png" style="margin-bottom:-8px"/>
-***[FSCalendar](https://github.com/WenchaoD/FSCalendar)*** 
+* Other repos: 
+	* [***FSCalendar***](https://github.com/WenchaoD)
 
+---
 
-
+# [Documentation](http://cocoadocs.org/docsets/FSPagerView)

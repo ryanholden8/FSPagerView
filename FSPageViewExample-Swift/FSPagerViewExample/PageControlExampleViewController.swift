@@ -10,7 +10,7 @@ import UIKit
 
 class PageControlExampleViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,FSPagerViewDataSource,FSPagerViewDelegate {
     
-    fileprivate let imageNames = ["1_1.jpg","1_2.jpg","1_3.jpg","1_4.jpg","1_5.jpg","1_6.jpg","1_7.jpg"]
+    fileprivate let imageNames = ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg","7.jpg"]
     fileprivate let pageControlStyles = ["Default", "Ring", "UIImage", "UIBezierPath - Star", "UIBezierPath - Heart"]
     fileprivate let pageControlAlignments = ["Right", "Center", "Left"]
     fileprivate let sectionTitles = ["Style", "Item Spacing", "Interitem Spacing", "Horizontal Alignment"]
@@ -98,14 +98,14 @@ class PageControlExampleViewController: UIViewController,UITableViewDataSource,U
         heartPath.addArc(
             withCenter: CGPoint(x: width*0.25,y: height*0.25),
             radius: width * 0.25,
-            startAngle: CGFloat(M_PI),
+            startAngle: .pi,
             endAngle: 0,
             clockwise: true
         )
         heartPath.addArc(
             withCenter: CGPoint(x: width*0.75, y: height*0.25),
             radius: width * 0.25,
-            startAngle: CGFloat(M_PI),
+            startAngle: .pi,
             endAngle: 0,
             clockwise: true
         )
@@ -130,6 +130,7 @@ class PageControlExampleViewController: UIViewController,UITableViewDataSource,U
             self.pageControl.numberOfPages = self.imageNames.count
             self.pageControl.contentHorizontalAlignment = .right
             self.pageControl.contentInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+            self.pageControl.hidesForSinglePage = true
         }
     }
     
@@ -165,13 +166,13 @@ class PageControlExampleViewController: UIViewController,UITableViewDataSource,U
             let cell = tableView.dequeueReusableCell(withIdentifier: "slider_cell")!
             let slider = cell.contentView.subviews.first as! UISlider
             slider.tag = indexPath.section
-            slider.value = Float((self.pageControl.itemSpacing-6.0).divided(by: 10.0))
+            slider.value = Float((self.pageControl.itemSpacing-6.0)/10.0)
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "slider_cell")!
             let slider = cell.contentView.subviews.first as! UISlider
             slider.tag = indexPath.section
-            slider.value = Float((self.pageControl.interitemSpacing-6.0).divided(by: 10.0))
+            slider.value = Float((self.pageControl.interitemSpacing-6.0)/10.0)
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
